@@ -15,12 +15,12 @@ UNICODE_ENABLE				= no		# Unicode
 BLUETOOTH_ENABLE			= no		# Enable Bluetooth with the Adafruit EZ-Key HID
 RGBLIGHT_ENABLE				= yes		# Enable WS2812 RGB underlight.
 SWAP_HANDS_ENABLE			= no		# Enable one-hand typing
-VIA_ENABLE					= yes       # Enable VIA
+VIA_ENABLE					= no		# Enable VIA
 LTO_ENABLE					= yes
 OLED_ENABLE					= yes
 WPM_ENABLE					= yes		# Needed by bongo cat
 
-RGBLIGHT_SUPPORTED			= no
+RGBLIGHT_SUPPORTED			= yes
 RGB_MATRIX_SUPPORTED		= no
 
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE

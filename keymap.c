@@ -77,9 +77,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_ESC,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RCTL,
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,   TG(0),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, KC_LALT,  KC_SPC,     KC_ENT, _______, KC_RALT
+                                          KC_LGUI, KC_LALT,  KC_SPC,     KC_ENT, _______, KC_RGUI
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB, XXXXXXX,   KC_UP, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_ESC, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUOT,
+       KC_ESC, KC_LEFT, KC_DOWN, KC_RIGHT, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   TG(0),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -108,6 +108,8 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 #define L_LOWER 2
 #define L_RAISE 4
 #define L_ADJUST 8
+#define L_GAMING 16
+#define L_MEDIA 32
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
@@ -126,6 +128,15 @@ void oled_render_layer_state(void) {
         case L_ADJUST|L_RAISE:
         case L_ADJUST|L_LOWER|L_RAISE:
             oled_write_ln_P(PSTR("Adjust"), false);
+            break;
+        case L_GAMING:
+            oled_write_ln_P(PSTR("Gaming"), false);
+            break;
+        case L_MEDIA:
+            oled_write_ln_P(PSTR("Media"), false);
+            break;
+        default:
+            oled_write_ln_P(PSTR("Unknown"), false);
             break;
     }
 }
