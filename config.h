@@ -30,8 +30,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL_PD2
 
-#define TAPPING_FORCE_HOLD
+// Modern tapping configuration
 #define TAPPING_TERM 200
+#define PERMISSIVE_HOLD        // More reliable mod-tap behavior
+#define HOLD_ON_OTHER_KEY_PRESS // Activate hold when another key pressed
+#define QUICK_TAP_TERM 100     // Allow tap-repeat within 100ms
 
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
